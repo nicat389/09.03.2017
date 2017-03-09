@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+	<style>
+		#main{
+			width:100px;
+			height:100px;
+			background:blue;
+			position:absolute;
+			left:0;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+	<script type="text/javascript">
+	    var heci=document.querySelector("#main");
+		var mesafe=window.innerWidth - heci.clientWidth; //px
+		var baslangicSuret=0; //px/ms
+		var sonSuret=200; //px/ms
+		var gedenVaxt=0;
+		var vaxt=500; //ms
+		var tecil=(2*mesafe)/(vaxt*vaxt);
+		var gedilenMesafe=0;
+		var zaman=new Date()
+		var salise=zaman.getMilliseconds()
+		function move(){
+			gedenVaxt++
+			baslangicSuret+=tecil;
+			gedilenMesafe+=baslangicSuret;
+			heci.style.left=gedilenMesafe+"px";
+			
+			if(gedenVaxt>vaxt){
+				clearInterval(deyismeAraligi)
+			}
+		}
+		var deyismeAraligi=setInterval(move,1)
+	</script>
+</body>
+</html>
